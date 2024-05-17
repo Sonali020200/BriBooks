@@ -23,7 +23,7 @@ const fontFamilies = [
 ];
 const Back = () => {
   let img =
-    "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg";
+    "https://www.shutterstock.com/image-photo/studio-shot-young-man-looking-260nw-372072697.jpg";
   let str = `For event organizers, it is crucial to collect their attendee’s information and preferences before the event to plan accordingly. It is a critical aspect, and leveraging suitable event registration form ideas is the easiest and most effective way to gather their information.`;
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
