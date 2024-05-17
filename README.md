@@ -51,3 +51,7 @@ npm run dev
 ## Preview Video
 
 [![BriBooks Preview Video](./books-generator/src/assets/preview.mp4)](./books-generator/src/assets/preview.mp4)
+
+
+## Live link
+https://bri-books-six.vercel.app/
