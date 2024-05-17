@@ -50,7 +50,11 @@ npm run dev
 
 ## Preview Video
 
-[![BriBooks Preview Video](./books-generator/src/assets/preview.mp4)](./books-generator/src/assets/preview.mp4)
+
+
+https://github.com/Sonali020200/BriBooks/assets/147674653/2331eaae-6b1a-4851-bbc5-e126a38676ac
+
+
 
 
 ## Live link
