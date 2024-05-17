@@ -124,7 +124,7 @@ const Back = () => {
             style={{ color: fontColor }}
             className=" font-mono uppercase text-[16px]"
           >
-            Written By: {author || "JHONE"}
+            Written By: {author || "M. SCOTT PECK"}
           </h3>
         </div>
         <hr />
