@@ -12,11 +12,11 @@ BriBooks is a simple web application that allows users to create custom book pag
 
 ## Technologies Used
 
-- React.js: Frontend UI library
-- jsPDF: Library for generating PDF documents in the client-side
-- Cloudinary: Cloud storage for uploading and managing images
-- Axios: HTTP client for making API requests
-- Tailwind CSS: Utility-first CSS framework for styling
+- **React.js**: Frontend UI library
+- **jsPDF**: Library for generating PDF documents in the client-side
+- **Cloudinary**: Cloud storage for uploading and managing images
+- **Axios**: HTTP client for making API requests
+- **Tailwind CSS**: Utility-first CSS framework for styling
 
 ## Installation
 
@@ -27,7 +27,7 @@ BriBooks is a simple web application that allows users to create custom book pag
    ```
 2. Install dependencies:
 
-    ```bash
+  ```bash
    cd books-generator
 
    npm install
@@ -50,4 +50,4 @@ npm run dev
 
 ## Preview Video
 
-[![BriBooks Preview Video](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](./books-generator/src/assets/preview.mp4)
+[![BriBooks Preview Video](./books-generator/src/assets/preview.mp4)](./books-generator/src/assets/preview.mp4)
