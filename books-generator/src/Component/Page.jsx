@@ -1,4 +1,3 @@
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 import { useState, useRef } from "react";
 import jsPDF from "jspdf";
 
@@ -60,30 +59,45 @@ const PaginationExample = () => {
       handleNextPage();
     }
   };
-  const pageWidth = 210;
-  const pageHeight = 237;
-  const handleDownloadPDF = () => {
-    const doc = new jsPDF("p", "mm", [pageWidth, pageHeight]);
 
-    pages.forEach((page, index) => {
+  const handleDownloadPDF = () => {
+    const doc = new jsPDF("p", "mm", "a4");
+
+    // Add front page
+    doc.addPage();
+    if (pages[0].backgroundImage) {
+      const imgWidth = doc.internal.pageSize.getWidth();
+      const imgHeight = doc.internal.pageSize.getHeight();
+      doc.addImage(pages[0].backgroundImage, "JPEG", 0, 0, imgWidth, imgHeight);
+    }
+    const textX = 15;
+    const textY = 15;
+    const lineHeight = 8;
+    doc.setTextColor("#000000");
+    doc.setFont("Arial");
+    doc.setFontSize(16);
+    const textLines = doc.splitTextToSize(pages[0].content, 180);
+    doc.text(textLines, textX, textY + lineHeight * 2);
+
+    // Add user-created pages
+    for (let i = 1; i < pages.length - 1; i++) {
       doc.addPage();
-      if (page.backgroundImage) {
+      if (pages[i].backgroundImage) {
         const imgWidth = doc.internal.pageSize.getWidth();
         const imgHeight = doc.internal.pageSize.getHeight();
-        doc.addImage(page.backgroundImage, "JPEG", 0, 0, imgWidth, imgHeight);
+        doc.addImage(pages[i].backgroundImage, "JPEG", 0, 0, imgWidth, imgHeight);
       }
+      doc.text(pages[i].content, textX, textY + lineHeight * 2);
+    }
 
-      const textX = 15;
-      const textY = 15;
-      const lineHeight = 8;
-
-      doc.setTextColor("#000000");
-      doc.setFont("Arial");
-      doc.setFontSize(16);
-
-      const textLines = doc.splitTextToSize(page.content, 180);
-      doc.text(textLines, textX, textY + lineHeight * 2);
-    });
+    // Add back page
+    doc.addPage();
+    if (pages[pages.length - 1].backgroundImage) {
+      const imgWidth = doc.internal.pageSize.getWidth();
+      const imgHeight = doc.internal.pageSize.getHeight();
+      doc.addImage(pages[pages.length - 1].backgroundImage, "JPEG", 0, 0, imgWidth, imgHeight);
+    }
+    doc.text(pages[pages.length - 1].content, textX, textY + lineHeight * 2);
 
     doc.save("Book.pdf");
   };

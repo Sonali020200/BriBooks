@@ -118,7 +118,7 @@ const Back = () => {
             style={{ color: fontColor }}
             className="text-[28px] uppercase font-mono my-[5px]"
           >
-            {title || "Book title"}
+            {title || "THE ROAD LESS TRAVELED"}
           </h1>
           <h3
             style={{ color: fontColor }}
