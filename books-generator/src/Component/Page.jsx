@@ -1,3 +1,4 @@
+import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 import { useState, useRef } from "react";
 import jsPDF from "jspdf";
 
@@ -11,7 +12,7 @@ const PaginationExample = () => {
   const contentRef = useRef(null);
 
   const handleChange = (event) => {
-    setTextAreaContent(event.target.value.slice(0, 1200));
+    setTextAreaContent(event.target.value.slice(0, 1000));
   };
 
   const handleFileChange = (event) => {
@@ -59,21 +60,30 @@ const PaginationExample = () => {
       handleNextPage();
     }
   };
-
+  const pageWidth = 210;
+  const pageHeight = 237;
   const handleDownloadPDF = () => {
-    const doc = new jsPDF("p", "mm", "a4");
-    const lineHeight = 8;
+    const doc = new jsPDF("p", "mm", [pageWidth, pageHeight]);
 
-    
-    for (const page of pages) {
+    pages.forEach((page, index) => {
       doc.addPage();
       if (page.backgroundImage) {
         const imgWidth = doc.internal.pageSize.getWidth();
         const imgHeight = doc.internal.pageSize.getHeight();
         doc.addImage(page.backgroundImage, "JPEG", 0, 0, imgWidth, imgHeight);
       }
-      doc.text(page.content, 15, 15 + lineHeight * 2);
-    }
+
+      const textX = 15;
+      const textY = 15;
+      const lineHeight = 8;
+
+      doc.setTextColor("#000000");
+      doc.setFont("Arial");
+      doc.setFontSize(16);
+
+      const textLines = doc.splitTextToSize(page.content, 180);
+      doc.text(textLines, textX, textY + lineHeight * 2);
+    });
 
     doc.save("Book.pdf");
   };
