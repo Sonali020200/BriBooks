@@ -1,0 +1,21 @@
+.heading {
+  font-size: 46px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #f35626;
+  background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hue 10s infinite linear;
+}
+
+@keyframes hue {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(-360deg);
+  }
+}
