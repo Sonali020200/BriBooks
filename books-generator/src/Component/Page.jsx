@@ -62,42 +62,18 @@ const PaginationExample = () => {
 
   const handleDownloadPDF = () => {
     const doc = new jsPDF("p", "mm", "a4");
-
-    // Add front page
-    doc.addPage();
-    if (pages[0].backgroundImage) {
-      const imgWidth = doc.internal.pageSize.getWidth();
-      const imgHeight = doc.internal.pageSize.getHeight();
-      doc.addImage(pages[0].backgroundImage, "JPEG", 0, 0, imgWidth, imgHeight);
-    }
-    const textX = 15;
-    const textY = 15;
     const lineHeight = 8;
-    doc.setTextColor("#000000");
-    doc.setFont("Arial");
-    doc.setFontSize(16);
-    const textLines = doc.splitTextToSize(pages[0].content, 180);
-    doc.text(textLines, textX, textY + lineHeight * 2);
 
-    // Add user-created pages
-    for (let i = 1; i < pages.length - 1; i++) {
+    
+    for (const page of pages) {
       doc.addPage();
-      if (pages[i].backgroundImage) {
+      if (page.backgroundImage) {
         const imgWidth = doc.internal.pageSize.getWidth();
         const imgHeight = doc.internal.pageSize.getHeight();
-        doc.addImage(pages[i].backgroundImage, "JPEG", 0, 0, imgWidth, imgHeight);
+        doc.addImage(page.backgroundImage, "JPEG", 0, 0, imgWidth, imgHeight);
       }
-      doc.text(pages[i].content, textX, textY + lineHeight * 2);
+      doc.text(page.content, 15, 15 + lineHeight * 2);
     }
-
-    // Add back page
-    doc.addPage();
-    if (pages[pages.length - 1].backgroundImage) {
-      const imgWidth = doc.internal.pageSize.getWidth();
-      const imgHeight = doc.internal.pageSize.getHeight();
-      doc.addImage(pages[pages.length - 1].backgroundImage, "JPEG", 0, 0, imgWidth, imgHeight);
-    }
-    doc.text(pages[pages.length - 1].content, textX, textY + lineHeight * 2);
 
     doc.save("Book.pdf");
   };
