@@ -157,7 +157,7 @@ const PaginationExample = () => {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          boxShadow: "2px 2px 4px rgba(0,0,0,0.7)",
+          boxShadow: "0px 2px 4px rgba(0,0,0,0.7)",
         }}
       >
         <p>{pages.find((page) => page.id === currentPage).content}</p>
